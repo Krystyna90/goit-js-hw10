@@ -28,12 +28,12 @@ function onCountryInput() {
         refs.countryList.insertAdjacentHTML('beforeend', makingCountryList(countries))
         refs.countryList.insertAdjacentHTML('beforeend', makingCountryCard(countries))
       } else if (countries.length >= 10) {
-        alertTooManyMatches()
+        tooManyMatches()
       } else {
         refs.countryList.insertAdjacentHTML('beforeend', makingCountryList(countries))
       }
     })
-    .catch(alertWrongName)
+    .catch(wrongNameError)
 }
 
 function makingCountryList(countries) {
@@ -65,11 +65,11 @@ function makingCountryCard(countries) {
   return markup
 }
 
-function alertWrongName() {
+function wrongNameError() {
   Notiflix.Notify.failure('Oops, there is no country with that name')
 }
 
-function alertTooManyMatches() {
+function tooManyMatches() {
   Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')
 }
 
